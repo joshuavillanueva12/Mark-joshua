@@ -16,6 +16,12 @@ int main(){
 		g = 'b';
 	else if (m >= 75 && m <= 100)
 		g = 'a';
+	if (m >=0 && m<=100)
+	
+	cout<<"your grade is" <<g;
+	else
+	cout<<"Error the input is invalid.\n\n";	
+		
 	
 	
 	
