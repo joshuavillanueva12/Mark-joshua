@@ -1,0 +1,51 @@
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+
+void push(Nodepointer &head, int Number);
+void print_list(nodepointer &head);
+struct Node {
+    int Data;
+    nodepointer Link;
+}
+int main() {
+    int Number;
+    nodepointer head;
+    nodepointer second;
+    nodepointer Third;
+    
+    Head = new Node();
+    second = new Node();
+    Third = new Node ();
+    
+    Head > Data = 38;
+    Head > Link = second;
+    
+    second > Data = 88;
+    second > Link = Third;
+    
+    Third > Data = 49;
+    Third > Link = NULL;
+    
+    print_list(Head);
+    cout<<"\nEnter a number ";
+    cin>> number;
+    push(Head, number);
+    print_list(Head);
+}
+void print_list(Nodepointer &head, int number){
+    Nodepointer current;
+    current = head;
+    while(current != NULL){
+        cout<<current >Data<<" ";
+        current = current > Link;
+    }
+}
+void push(Nodepointer &head, int Number){
+    Nodepointer NewNode;
+    NewNode = new Node();
+    NewNode > Data = Number;
+    NewNode > Link = Head;
+    head = NewNode;
+    cout<<"\nNew node["<<NewNode>Data<<"] pushed to banked list";
+}
