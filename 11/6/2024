@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+
+struct node {
+    int data;
+    struct node *next;
+};
+
+struct node *head = NULL;
+
+void printList() {
+    struct node *p = head;
+    cout << "\n[";
+  
+    while (p != NULL) {
+        cout << " " << p->data << " ";
+        p = p->next;
+    }
+    cout << "]";
+}
+
+void insertAtEnd(int data) {
+    struct node *newNode = new node(); 
+    newNode->data = data;
+    newNode->next = NULL;
+
+    if (head == NULL) {
+        head = newNode; 
+    } else {
+        struct node *current = head;
+        while (current->next != NULL) {
+            current = current->next;
+        }
+        current->next = newNode; 
+    }
+}
+
+void insertAtBegin(int data) {
+    struct node *newNode = new node(); 
+    newNode->data = data;
+    newNode->next = head; 
+    head = newNode; 
+}
+
+int main() {
+    insertAtEnd(12);
+    insertAtEnd(22);
+    insertAtEnd(30);
+    insertAtEnd(44);
+    insertAtEnd(50);
+    insertAtEnd(20);
+   
+    cout << "Linked List: ";
+    printList();
+    
+    return 0;
+}
