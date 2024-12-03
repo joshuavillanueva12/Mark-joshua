@@ -1,1 +1,48 @@
 
+import java.util.Scanner;
+
+public class WordGuessingGame {
+    public static void main(String[] args) {
+        String hiddenWord = "encyclopedia";
+        StringBuilder currentGuess = new StringBuilder("***********"); // 11 letters
+        int lives = 3;
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Welcome to the Word Guessing Game!");
+        System.out.println("The hidden word has " + hiddenWord.length() + " letters.");
+        
+        while (lives > 0 && currentGuess.toString().contains("*")) {
+            System.out.println("Current guess: " + currentGuess);
+            System.out.println("Lives remaining: " + lives);
+            System.out.print("Guess a letter: ");
+            char guessedLetter = scanner.nextLine().charAt(0);
+
+            if (hiddenWord.indexOf(guessedLetter) >= 0) {
+                // If the guessed letter is in the hidden word, update the current guess
+                for (int i = 0; i < hiddenWord.length(); i++) {
+                    if (hiddenWord.charAt(i) == guessedLetter) {
+                        currentGuess.setCharAt(i, guessedLetter);
+                    }
+                }
+                System.out.println("Good guess!");
+            } else {
+                // If the guessed letter is not in the hidden word, decrement lives
+                lives--;
+                System.out.println("Wrong guess! Lives lost.");
+            }
+
+            // Check if the word has been completely guessed
+            if (currentGuess.toString().equals(hiddenWord)) {
+                System.out.println("Congratulations! You've guessed the word: " + hiddenWord);
+                break;
+            }
+        }
+
+        if (lives == 0) {
+            System.out.println("Game over! The hidden word was: " + hiddenWord);
+        }
+
+        scanner.close();
+    }
+}
