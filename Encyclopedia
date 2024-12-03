@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class WordGuessGame {
+    public static void main(String[] args) {
+        String hiddenWord = "encyclopedia";
+        StringBuilder guessedWord = new StringBuilder("***********");
+        int lives = 3;
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Hidden word is made up of " + hiddenWord.length() + " letters.");
+        System.out.println(guessedWord);
+
+        while (lives > 0 && guessedWord.toString().contains("*")) {
+            System.out.print("Guess a letter: ");
+            char guessedLetter = scanner.nextLine().charAt(0);
+
+            if (hiddenWord.contains(String.valueOf(guessedLetter))) {
+                for (int i = 0; i < hiddenWord.length(); i++) {
+                    if (hiddenWord.charAt(i) == guessedLetter) {
+                        guessedWord.setCharAt(i, guessedLetter);
+                    }
+                }
+                System.out.println("Correct! The word so far: " + guessedWord);
+            } else {
+                lives--;
+                System.out.println("Wrong guess. Lives remaining: " + lives);
+            }
+
+            if (guessedWord.toString().equals(hiddenWord)) {
+                System.out.println("Congratulations! You guessed the word: " + hiddenWord);
+                break;
+            }
+        }
+
+        if (lives == 0) {
+            System.out.println("Game over! The word was: " + hiddenWord);
+        }
+
+        scanner.close();
+    }
+}
